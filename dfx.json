@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "ADPP_backend_backend": {
+      "main": "src/ADPP_backend_backend/main.mo",
+      "type": "motoko"
+    },
+    "ADPP_backend_frontend": {
+      "dependencies": [
+        "ADPP_backend_backend"
+      ],
+      "source": [
+        "src/ADPP_backend_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "ADPP_backend_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
