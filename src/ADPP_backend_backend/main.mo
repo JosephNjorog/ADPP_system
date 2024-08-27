@@ -1,5 +1,6 @@
-actor {
-  public query func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
+// src/ADPP_backend_backend/main.mo
+actor ADPP_backend_backend {
+  public func hello() : async Text {
+    return "Hello, world!";
+  }
 };

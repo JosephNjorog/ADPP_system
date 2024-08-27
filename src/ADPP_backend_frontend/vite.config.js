@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import environment from 'vite-plugin-environment';
 import dotenv from 'dotenv';
 
+// Load environment variables from the .env file located two levels up
 dotenv.config({ path: '../../.env' });
 
 export default defineConfig({
@@ -20,24 +21,20 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:4943",
+        target: "http://127.0.0.1:4943", // Adjust this to your backend server's address
         changeOrigin: true,
       },
     },
   },
   plugins: [
-    react(),
-    environment("all", { prefix: "CANISTER_" }),
-    environment("all", { prefix: "DFX_" }),
+    react(), // React plugin to handle JSX/TSX
+    environment("all", { prefix: "CANISTER_" }), // Environment variables for Canisters
+    environment("all", { prefix: "DFX_" }), // Environment variables for DFX
   ],
   resolve: {
-    alias: [
-      {
-        find: "declarations",
-        replacement: fileURLToPath(
-          new URL("../declarations", import.meta.url)
-        ),
-      },
-    ],
+    alias: {
+      "declarations": fileURLToPath(new URL("../declarations", import.meta.url)),
+      // You can add more aliases here if needed
+    },
   },
 });
